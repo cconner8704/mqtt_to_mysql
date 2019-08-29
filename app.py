@@ -100,6 +100,7 @@ logging.basicConfig(stream=sys.stdout, level=logging_level)
 try:
   logging.debug("dbhost: %s" % args.dbhost)
   logging.debug("dbuser: %s" % args.dbuser)
+  logging.debug("dbport: %s" % args.dbport)
   logging.debug("dbpass: %s" % args.dbpass)
   db = Database(host = args.dbhost, user = args.dbuser, password = args.dbpass, db = "mysql")
 except Exception as e:
