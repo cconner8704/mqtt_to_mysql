@@ -114,7 +114,7 @@ user = args.mqttuser
 password = args.mqttpass
 topic = args.mqtttopic
 cafile = args.mqttcafile
-logging.debug("broker: %s" % broker)
+logging.debug("broker_address: %s" % broker_address)
 logging.debug("port: %s" % port)
 logging.debug("password: %s" % password)
 logging.debug("topic: %s" % topic)
