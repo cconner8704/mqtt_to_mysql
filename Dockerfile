@@ -5,7 +5,7 @@ MAINTAINER Chris Conner chrism.conner@gmail.com
 RUN pip install requests
 RUN pip install paho-mqtt
 RUN apt-get update && apt-get install -y supervisor
-RUN apt-get -y install python-mysqldb
+RUN apt-get install -y libmariadb-dev libmariadb-dev-compat && pip3 install mysqlclient
 
 #Make log dir for supervisor
 RUN mkdir -p /var/log/supervisor
