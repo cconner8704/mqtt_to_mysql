@@ -3,9 +3,9 @@ MAINTAINER Chris Conner chrism.conner@gmail.com
 
 #Install requests, flask and supervisor
 RUN pip install requests
-RUN pip install mysql-python
 RUN pip install paho-mqtt
 RUN apt-get update && apt-get install -y supervisor
+RUN apt-get -y install python-mysqldb
 
 #Make log dir for supervisor
 RUN mkdir -p /var/log/supervisor
