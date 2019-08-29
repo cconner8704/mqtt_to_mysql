@@ -25,6 +25,7 @@ ENV DBHOST localhost
 ENV DBPORT 3306
 ENV DBUSER user
 ENV DBPASS pass
+ENV DEBUG FALSE
 
 #Expose ports
 

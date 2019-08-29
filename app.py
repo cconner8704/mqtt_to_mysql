@@ -83,12 +83,12 @@ parser.add_argument('-u', '--dbuser', action='store', dest='dbuser',
 parser.add_argument('-w', '--dbpass', action='store', dest='dbpass',
                     default="password", help='Password for DB')
 
-parser.add_argument('-v', '--verbose', action="store_true", dest='verbose',
-                    default=False, help='Enable debug logging')
+parser.add_argument('-v', '--verbose', action="store", dest='verbose',
+                    default="FALSE", help='Enable debug logging')
 
 args = parser.parse_args()
 
-if args.verbose:
+if args.verbose != "FALSE":
     logging_level=logging.DEBUG
     app_debug=True
 else:
@@ -98,6 +98,9 @@ else:
 logging.basicConfig(stream=sys.stdout, level=logging_level)
 
 try:
+  logging.debug("dbhost: %s" % args.dbhost)
+  logging.debug("dbuser: %s" % args.dbuser)
+  logging.debug("dbpass: %s" % args.dbpass)
   db = Database(host = args.dbhost, user = args.dbuser, password = args.dbpass, db = "mysql")
 except Exception as e:
   logging.exception("Failed to connect to database: %s" % e)
@@ -110,6 +113,11 @@ user = args.mqttuser
 password = args.mqttpass
 topic = args.mqtttopic
 cafile = args.mqttcafile
+logging.debug("broker: %s" % broker)
+logging.debug("port: %s" % port)
+logging.debug("password: %s" % password)
+logging.debug("topic: %s" % topic)
+logging.debug("cafile: %s" % cafile)
 
 client = mqttClient.Client("PythonMysqlApp")
 client.username_pw_set(user, password=password)
