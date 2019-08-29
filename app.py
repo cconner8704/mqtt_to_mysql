@@ -128,7 +128,7 @@ if cafile is not None and cafile != "None":
   client.tls_set(cafile, tls_version=ssl.PROTOCOL_TLSv1_2)
   client.tls_insecure_set(True)
 
-client.connect(broker_address, port=port)
+client.connect(broker_address, port=int(port))
 
 client.subscribe(topic, qos=1)
 try:
