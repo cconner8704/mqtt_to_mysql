@@ -120,7 +120,7 @@ logging.debug("password: %s" % password)
 logging.debug("topic: %s" % topic)
 logging.debug("cafile: %s" % cafile)
 
-client = mqttClient.Client("PythonMysqlApp")
+client = mqttClient.Client(client_id="PythonMysqlApp%s" % topic, clean_session=True)
 client.username_pw_set(user, password=password)
 client.on_connect = on_connect
 client.on_message = on_message
@@ -130,7 +130,7 @@ if cafile is not None and cafile != "None":
 
 client.connect(broker_address, port=int(port))
 
-client.subscribe(topic, qos=1)
+client.subscribe(topic, qos=2)
 try:
   client.loop_forever()
 except KeyboardInterrupt:
