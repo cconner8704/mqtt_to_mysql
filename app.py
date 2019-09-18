@@ -27,7 +27,7 @@ class Database:
             status = "DB init fail %s " % str(e)
             logging.info("%s" % status)
 
-    def reconnect(self)
+    def reconnect(self):
         self.conn = MySQLdb.connect(self.host, self.user, self.password, self.db)
         try:
             if (self.conn):
